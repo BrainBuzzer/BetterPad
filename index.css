@@ -1,0 +1,9 @@
+#main {
+  font-family: 'Slabo 27px', serif;
+}
+
+#main p {
+  font-family: 'Open Sans', sans-serif;
+}
+
+pre, code { font-family: Hack, monospace; }
