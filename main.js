@@ -2,6 +2,9 @@ const {dialog} = require('electron').remote;
 const fs = require('fs');
 const marked = require('marked');
 
+var content;
+let body = document.getElementById('main');
+
 dialog.showOpenDialog(function (fileNames) {
   if(fileNames === undefined) {
     console.log("No file selected");
@@ -10,13 +13,13 @@ dialog.showOpenDialog(function (fileNames) {
       if(err) {
         console.log("Error: " + err);
       }
-      console.log(marked(data));
-      document.getElementById('main').innerHTML = marked(data);
+      content = data;
+      body.innerHTML = content;
     })
   }
 });
 
-document.getElementById('button').addEventListener('click', function() {
+document.getElementById('tbtn').addEventListener('click', function() {
   if(document.getElementById('theme').getAttribute('data-theme')==="dark") {
     document.getElementById('theme').setAttribute('href', 'index.css');
     document.getElementById('toggle').setAttribute('class', 'fa fa-toggle-off');
@@ -27,3 +30,13 @@ document.getElementById('button').addEventListener('click', function() {
     document.getElementById('theme').setAttribute('data-theme', 'dark');
   }
 });
+
+document.getElementById('edit').addEventListener('click', function() {
+  if(document.getElementById('editID').getAttribute('data-state')==="edit") {
+    body.innerHTML = marked(content);
+    document.getElementById('editID').setAttribute('data-state', "view");
+  } else {
+    body.innerHTML = content;
+    document.getElementById('editID').setAttribute('data-state', "edit");
+  }
+})
