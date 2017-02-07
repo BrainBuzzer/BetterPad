@@ -4,20 +4,25 @@ const marked = require('marked');
 
 var content;
 let body = document.getElementById('main');
+let code = document.getElementById('editor');
 
-dialog.showOpenDialog(function (fileNames) {
-  if(fileNames === undefined) {
-    console.log("No file selected");
-  }else{
-    fs.readFile(fileNames[0], 'utf-8', function(err, data) {
-      if(err) {
-        console.log("Error: " + err);
-      }
-      content = data;
-      body.innerHTML = content;
-    })
-  }
-});
+document.getElementById('fileopener').addEventListener('click', function() {
+  dialog.showOpenDialog(function (fileNames) {
+    if(fileNames === undefined) {
+      console.log("No file selected");
+    }else{
+      fs.readFile(fileNames[0], 'utf-8', function(err, data) {
+        if(err) {
+          console.log("Error: " + err);
+        }
+        document.getElementById('file-open').style.visibility = "hidden";
+        document.getElementById('file-opened').style.visibility = "visible";
+        content = data;
+        body.innerHTML = marked(content);
+      })
+    }
+  });
+})
 
 document.getElementById('tbtn').addEventListener('click', function() {
   if(document.getElementById('theme').getAttribute('data-theme')==="dark") {
@@ -33,10 +38,17 @@ document.getElementById('tbtn').addEventListener('click', function() {
 
 document.getElementById('edit').addEventListener('click', function() {
   if(document.getElementById('editID').getAttribute('data-state')==="edit") {
+    body.style.display = "block";
+    code.style.display = "none";
     body.innerHTML = marked(content);
     document.getElementById('editID').setAttribute('data-state', "view");
   } else {
-    body.innerHTML = content;
+    body.style.display = "none";
+    code.style.display = "block";
+    code.innerHTML = content;
+    var editor = ace.edit("editor");
+    editor.setTheme("ace/theme/monokai");
+    editor.getSession().setMode("ace/mode/markdown");
     document.getElementById('editID').setAttribute('data-state', "edit");
   }
 })

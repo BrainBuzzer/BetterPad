@@ -1,3 +1,15 @@
+#file-opened {
+  visibility: hidden;
+}
+
+#file-open {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-content: center;
+}
+
 #main {
   font-family: 'Slabo 27px', serif;
   padding-top: 20px;
@@ -9,6 +21,10 @@
 
 pre, code { font-family: Hack, monospace; }
 
+#editor {
+  height: 100%;
+}
+
 #button {
   position: absolute;
   top: 0;
@@ -17,4 +33,13 @@ pre, code { font-family: Hack, monospace; }
   margin-right: 5px;
   margin-top: 10px;
   font-size: 24px;
+}
+
+#fileopener {
+  padding: 15px;
+  width: 200px;
+  text-align: center;
+  background-color: #bdc3c7;
+  color: #2c3e50;
+  border-radius: 500px;
 }

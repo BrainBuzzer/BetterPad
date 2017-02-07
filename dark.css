@@ -17,6 +17,10 @@ pre, code {
   font-family: Hack, monospace;
 }
 
+#editor {
+  height: 100%;
+}
+
 #button {
   position: absolute;
   top: 0;

@@ -11,15 +11,24 @@
 		<link rel="stylesheet" href="index.css" id="theme" data-theme="light">
 	</head>
 	<body>
-		<div id="button">
-			<div id="edit"><i class="fa fa-edit" data-state="edit" id="editID"></i></div>
-			<div id="tbtn"><i class="fa fa-toggle-off" id="toggle"></i></div>
+		<div id="file-open">
+			<div id="fileopener">Open a File</div>
 		</div>
-		<div class="container">
-			<section id="main">
+		<div id="file-opened">
+			<div id="button">
+				<div id="edit"><i class="fa fa-edit" data-state="edit" id="editID"></i></div>
+				<div id="tbtn"><i class="fa fa-toggle-off" id="toggle"></i></div>
+			</div>
+			<div class="container">
+				<section id="main">
 
-			</section>
+				</section>
+				<pre id="editor">
+					<!--- Code Goes Here!!! -->
+				</pre>
+			</div>
 		</div>
+		<script type="text/javascript" src="./ace/ace.js"></script>
 		<script type="text/javascript" src="main.js"></script>
 	</body>
 </html>
